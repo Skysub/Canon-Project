@@ -3,8 +3,8 @@ class Cannon {
   float theta, max = 4.85, min = 3.14;
   float x,y;
 
-  Cannon(float t) {
-    location = new PVector(30, height-90);
+  Cannon(float t, PVector location) {
+    this.location = new PVector(location.x,location.y);
     theta = t;
   }
 
@@ -26,7 +26,7 @@ class Cannon {
 
     translate(location.x, location.y);
     rotate(theta);
-    rect(0, 0, 40, 200);
+    rect(-35, 0, 40, 200);
     popMatrix();
 
     ellipse(location.x, location.y, 200, 200);
@@ -37,8 +37,8 @@ class Cannon {
    pushMatrix();
    translate(location.x, location.y);
    
-   x = 200 * cos(theta);
-   y = 200 * sin(theta);
+   y = 200 * cos(theta);
+   x = -200 * sin(theta);
    PVector ballPos = new PVector(x, y);
    popMatrix();
    
