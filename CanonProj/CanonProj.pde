@@ -1,12 +1,19 @@
-Cannon cannon;
+GameLogic gameLogic;
 
 void setup() {
   size(1280,720);
-    cannon = new Cannon(1.35*PI);
+  gameLogic = new GameLogic();
 }
 
 void draw() {
   background(255);
-  cannon.update();
-  cannon.display();
-  }
+  DrawGround();
+  gameLogic.Update();
+
+}
+
+
+void DrawGround(){
+  rect(0,height-60,width,60);
+  
+}
