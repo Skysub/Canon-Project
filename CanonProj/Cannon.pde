@@ -1,6 +1,6 @@
 class Cannon {
   PVector location;
-  float theta, max = 4.85, min = 3.15;
+  float theta, max = 4.85, min = 3.14;
   float x,y;
 
   Cannon(float t) {
