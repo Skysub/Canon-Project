@@ -1,10 +1,12 @@
-boolean hojre=false,venstre=false,space=false,enter=false;
-int kDrej = 0;
-int score = 0, hScore = 0, maxTargets = 3;
-PVector tSkyd;
-
 class GameLogic {
 
+boolean hojre=false,venstre=false,space=false,enter=false;
+int kDrej = 0;
+int score = 0, hScore = 0, maxTargets = 3, maxBalls = 2, ballsPS;
+PVector tSkyd;
+float ballTimer = 0;
+CannonBall[] balls = new CannonBall[maxBalls];
+  
   Cannon cannon;
 
   GameLogic() {
@@ -17,7 +19,7 @@ class GameLogic {
     else if(hojre){kDrej = 2;}
     else {kDrej = 1;}
     
-    if(space) gShoot();
+    if(space && millis()+(1000f/ballsPS) > ballTimer) {gShoot(); ballTimer = millis();}
     
         
     cannon.update(kDrej);
@@ -25,9 +27,9 @@ class GameLogic {
   }
   
   void gShoot(){
-    //tSkyd = cannon.shoot();
     
-    
+    tSkyd = cannon.shoot();
+    balls[0] = new CannonBall(tSkyd, 0.5f);
     
   }
 
