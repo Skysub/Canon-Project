@@ -7,6 +7,13 @@ void setup() {
 
 void draw() {
   background(255);
+  DrawGround();
   gameLogic.Update();
 
+}
+
+
+void DrawGround(){
+  rect(0,height-60,width,60);
+  
 }
