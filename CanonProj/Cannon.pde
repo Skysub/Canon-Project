@@ -4,22 +4,28 @@ class Cannon {
   float x;
   float y;
 
-    Cannon(float t) {
+    Cannon(float t, int a) {
     location = new PVector(30,height-90);
     theta = t;
+    rotationDecider = a;
 
   }
 
   void update() {
    
-   if (keyPressed == true) {
+   /*if (keyPressed == true) {
     if (keyCode == UP && theta >= 1.1*PI) {
       theta += -0.025;
     }
     if (keyCode == DOWN && theta <= 1.5*PI) {
       theta += 0.025;
       }
-    }
+    } */ //Gamle controls
+    
+    if(rotationDecider == 0) theta = 0;
+    if(rotationDecider == 1) theta += -0.025;
+    if(rotationDecider == 2) theta += 0.025;
+    
    }
 
   void display() {
@@ -35,6 +41,16 @@ class Cannon {
     
     ellipse(location.x, location.y, 200, 200);
 
+  }
+  
+  /*PVector shoot(){
+    PVector ballPos = new PVector();
+    
+    return ballPos;
+  }*/
+  
+  
+  
   }
 
 
