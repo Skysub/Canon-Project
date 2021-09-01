@@ -15,6 +15,7 @@ class Cannon {
     
     if(theta > 4.84) theta = max;
     if (theta < 3.16) theta = min;
+
   }
 
   void display() {
@@ -29,11 +30,19 @@ class Cannon {
     popMatrix();
 
     ellipse(location.x, location.y, 200, 200);
+  
   }
 
-  /*PVector shoot(){
-   PVector ballPos = new PVector();
+  PVector shoot(){
+   pushMatrix();
+   translate(location.x, location.y);
+   
+   x = 200 * cos(theta);
+   y = 200 * sin(theta);
+   PVector ballPos = new PVector(x, y);
+   popMatrix();
    
    return ballPos;
-   }*/
+  }
+
 }
