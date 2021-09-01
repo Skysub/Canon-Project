@@ -7,8 +7,8 @@ void setup() {
 
 void draw() {
   background(255);
-  DrawGround();
   gameLogic.Update();
+  DrawGround();
 
 }
 

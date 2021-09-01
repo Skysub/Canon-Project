@@ -5,7 +5,7 @@ class GameLogic {
 
   GameLogic() {
 
-    cannon = new Cannon(0.05f);
+    cannon = new Cannon(1.35*PI);
   }
 
 

@@ -5,25 +5,24 @@ class Cannon {
   float y;
 
     Cannon(float t) {
-    location = new PVector(30,height-30);
+    location = new PVector(30,height-90);
     theta = t;
 
   }
 
   void update() {
-    
+   
    if (keyPressed == true) {
-    if (keyCode == UP) {
-      theta += -0.05;
+    if (keyCode == UP && theta >= 1.1*PI) {
+      theta += -0.025;
     }
-    if (keyCode == DOWN) {
-      theta += 0.05;
+    if (keyCode == DOWN && theta <= 1.5*PI) {
+      theta += 0.025;
       }
     }
    }
 
   void display() {
-     //theta += 0.03;
      
     fill(220);
     
@@ -34,7 +33,7 @@ class Cannon {
     rect(0,0,40,200);
     popMatrix();
     
-    ellipse(30, height-30, 200, 200);
+    ellipse(location.x, location.y, 200, 200);
 
   }
 
