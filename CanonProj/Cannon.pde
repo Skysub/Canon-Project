@@ -11,23 +11,30 @@ class Cannon {
   }
 
   void update() {
-  }
+    
+   if (keyPressed == true) {
+    if (keyCode == UP) {
+      theta += -0.05;
+    }
+    if (keyCode == DOWN) {
+      theta += 0.05;
+      }
+    }
+   }
 
   void display() {
-     float x = 30 * cos(theta);
-     float y = height-30 * sin(theta);
-     theta += 0.03;
+     //theta += 0.03;
      
     fill(220);
-    ellipse(30, height-30, 200, 200);
     
-    //rectMode(CENTER);
     pushMatrix();
 
     translate(location.x,location.y);
     rotate(theta);
-    rect(location.x,location.y,30,130);
+    rect(0,0,40,200);
     popMatrix();
+    
+    ellipse(30, height-30, 200, 200);
 
   }
 
