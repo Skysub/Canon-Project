@@ -6,8 +6,8 @@ class GameLogic {
   Cannon cannon;
 
   GameLogic() {
+    cannon = new Cannon(1.35*PI);
 
-    cannon = new Cannon(PI*1.35);
   }
 
 
