@@ -1,8 +1,7 @@
 class Cannon {
   PVector location;
-  float theta;
-  float x;
-  float y;
+  float theta, max = 4.85, min = 3.15;
+  float x,y;
 
   Cannon(float t) {
     location = new PVector(30, height-90);
@@ -11,8 +10,11 @@ class Cannon {
 
   void update(int a) {
     if (a == 0) theta += 0;
-    else if (a == 1) theta += -0.025;
-    else if (a == 2) theta += 0.025;
+    else if (a == 1 && theta > min) theta -= 0.025;
+    else if (a == 2 && theta < max) theta += 0.025;
+    
+    if(theta > 4.84) theta = max;
+    if (theta < 3.16) theta = min;
   }
 
   void display() {

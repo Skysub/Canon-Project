@@ -1,5 +1,7 @@
 boolean hojre=false,venstre=false,space=false,enter=false;
 int kDrej = 0;
+int score = 0, hScore = 0, maxTargets = 3;
+PVector tSkyd;
 
 class GameLogic {
 
@@ -14,9 +16,19 @@ class GameLogic {
     if((hojre && venstre)||(!hojre && !venstre)){kDrej = 0;}
     else if(hojre){kDrej = 2;}
     else {kDrej = 1;}
+    
+    if(space) gShoot();
+    
         
     cannon.update(kDrej);
     cannon.display();
+  }
+  
+  void gShoot(){
+    //tSkyd = cannon.shoot();
+    
+    
+    
   }
 
 
@@ -31,5 +43,7 @@ class GameLogic {
   }
 
   void DrawScoreTime(int s, int hs, int t) {
+    
+    
   }
 }
