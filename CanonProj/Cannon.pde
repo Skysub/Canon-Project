@@ -13,6 +13,9 @@ class Cannon {
     if (a == 0) theta += 0;
     else if (a == 1) theta += -0.025;
     else if (a == 2) theta += 0.025;
+    
+    if(theta <= 1.1*PI) theta = 1.1*PI;
+    else if(theta >= 1.5*PI) theta = 1.5*PI;
   }
 
   void display() {
@@ -27,11 +30,19 @@ class Cannon {
     popMatrix();
 
     ellipse(location.x, location.y, 200, 200);
+  
   }
 
-  /*PVector shoot(){
-   PVector ballPos = new PVector();
+  PVector shoot(){
+   pushMatrix();
+   translate(location.x, location.y);
+   
+   x = 200 * cos(theta);
+   y = 200 * sin(theta);
+   PVector ballPos = new PVector(x, y);
+   popMatrix();
    
    return ballPos;
-   }*/
+  }
+
 }
