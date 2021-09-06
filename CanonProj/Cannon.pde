@@ -26,7 +26,7 @@ class Cannon {
 
     translate(location.x, location.y);
     rotate(theta);
-    rect(-35, 0, 40, 200);
+    rect(-20, 0, 40, 200);
     popMatrix();
 
     ellipse(location.x, location.y, 200, 200);
