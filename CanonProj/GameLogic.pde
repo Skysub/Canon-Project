@@ -8,9 +8,11 @@ float ballTimer = 0;
 CannonBall[] balls = new CannonBall[maxBalls];
   
   Cannon cannon;
+  StrengthMeter strengthMeter;
 
   GameLogic() {
     cannon = new Cannon(1.35*PI, cannonLocation);
+    strengthMeter = new StrengthMeter();
 
   }
 
@@ -26,10 +28,13 @@ CannonBall[] balls = new CannonBall[maxBalls];
     cannon.update(kDrej);
     cannon.display();
     
+    strengthMeter.Update();
+    strengthMeter.Draw();
+    
+    
     //skyd kanonkuglen og sørg for at den kun kan skydes et hvis antal gange i sekundet
     if(space && millis() > ballTimer+(1000f/ballsPS)) {gShoot(); ballTimer = millis();} 
         
-
   }
   
   void gShoot(){

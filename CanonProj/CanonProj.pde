@@ -14,6 +14,7 @@ void draw() {
 
 
 void DrawGround() {
+  fill(220); //græs-farve?
   rect(0, height-60, width, 60);
 }
 
