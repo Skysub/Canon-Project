@@ -33,7 +33,7 @@ Target[] targets = new Target[maxTargets];
   }
 
   void Update() {
-    if(!round && space) roundBegin = true;
+    if(!round && enter) roundBegin = true;
     
     //fortæller kanonen hvilken vej den skal dreje
     if((hojre && venstre)||(!hojre && !venstre)){kDrej = 0;}
@@ -53,7 +53,7 @@ Target[] targets = new Target[maxTargets];
     
     
     //skyd kanonkuglen og sørg for at den kun kan skydes et hvis antal gange i sekundet
-    if(space && millis() > ballTimer+(1000f/ballsPS)) {gShoot(); ballTimer = millis();} 
+    if(round && space && millis() > ballTimer+(1000f/ballsPS)) {gShoot(); ballTimer = millis();} 
         
 
     for(int i = 0; i<maxTargets;i++){
@@ -88,8 +88,8 @@ Target[] targets = new Target[maxTargets];
     roundTimer = rTStart + (timeLimitMin*60000) - millis();
     }
     
-    if(rTStart + (timeLimitMin*30000) - millis() <= 0){
-      roundTimer = 0;
+    if(round && rTStart + (timeLimitMin*60000) - millis() <= 0){
+      roundTimer = timeLimitMin*60000;
       round = false;
       hScore = score;
     }
@@ -112,7 +112,8 @@ Target[] targets = new Target[maxTargets];
     if(k == 39){hojre = b;}
     if(k == 37){venstre = b;}
     if(k == 32){space = b;}
-    if(k == 13){enter = b;}
+    if(k == 10){enter = b;}
+    
   }
 
   void DrawScoreTime(int s, int hs, int t) {
