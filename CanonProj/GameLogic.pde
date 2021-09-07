@@ -1,12 +1,12 @@
 class GameLogic {
 
 boolean hojre=false,venstre=false,space=false,enter=false, ball = false, round = false, roundBegin = false;
-int kDrej = 0, nextBall = 0, timeLimitMin = 2;
+int kDrej = 0, nextBall = 0, timeLimitMin = 1, roundTimer = 0, rTStart;
 int score = 0, hScore = 0, maxTargets = 3, //hvor mange targets der maks bliver spawnet samtidig
     maxBalls = 50, //Hvor mange kugler der kan være på skærmen samtidig
     ballsPS = 2; //Hvor mange kugler kanon kan skyde i sekundet
 PVector tSkyd, tSkydS, cannonLocation = new PVector(30, height-90);
-float ballTimer = 0, roundTimer = 0, rTStart;
+float ballTimer = 0;
 
 CannonBall[] balls = new CannonBall[maxBalls];
 Target[] targets = new Target[maxTargets];
@@ -115,7 +115,7 @@ Target[] targets = new Target[maxTargets];
     if(k == 13){enter = b;}
   }
 
-  void DrawScoreTime(int s, int hs, float t) {
+  void DrawScoreTime(int s, int hs, int t) {
     int min, sec;
     pushMatrix();
     fill(20);
@@ -123,7 +123,11 @@ Target[] targets = new Target[maxTargets];
     textSize(45);
     translate(20,40);
     
-    text("Time: "+t,0,0);
+    min = floor(t/60000f);
+    t = t - floor(t/60000f)*60000;
+    sec = floor(t/1000f);
+    t = t - floor(t/1000f)*1000;
+    text("Time: "+min+":"+sec+"."+t,0,0);
     
     translate(0,45);
     text("Score: "+s,0,0);
