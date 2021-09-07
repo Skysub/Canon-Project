@@ -82,6 +82,7 @@ Target[] targets = new Target[maxTargets];
       for(int j = 0; j<maxTargets; j++){
         if(targets[j].TjekCollision(balls[i].GetPos(),balls[i].GetSize())){
           score++;
+          //if(score > hScore) hScore = score;
           targets[j] = new Target(new PVector(random(150,width-50),random(50,height-150)));
         }
       }
@@ -103,8 +104,10 @@ Target[] targets = new Target[maxTargets];
     textSize(45);
     translate(20,40);
     text("Time: "+t,0,0);
-    translate(0,40);
+    translate(0,45);
     text("Score: "+s,0,0);
+    translate(0,45);
+    text("Highscore: "+hs,0,0);
     popMatrix();
     
   }
