@@ -10,8 +10,8 @@ class Cannon {
 
   void update(int a) {
     if (a == 0) theta += 0;
-    else if (a == 1 && theta > min) theta -= 0.025;
-    else if (a == 2 && theta < max) theta += 0.025;
+    else if (a == 1 && theta > min) theta -= 0.01;
+    else if (a == 2 && theta < max) theta += 0.01;
     
     if(theta > 4.84) theta = max;
     if (theta < 3.16) theta = min;

@@ -22,7 +22,7 @@ class CannonBall {
   void DrawBall() {
     pushMatrix();
     translate(pos.x, pos.y);
-    circle(ballSize/2f, ballSize/2f, ballSize);
+    circle(0, 0, ballSize);
     popMatrix();
 
   }

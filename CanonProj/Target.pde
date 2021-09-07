@@ -22,7 +22,7 @@ class Target {
 
   boolean TjekCollision(PVector b, float ballSize){
     
-    if(pos.dist(b) <= radius+ballSize/2f){
+    if(pos.dist(b) <= radius+(ballSize/2f)){
       return true;      
     }
     return false;
@@ -32,8 +32,8 @@ class Target {
   void DrawTarget() {
     pushMatrix();
     stroke(255,0,0);
-    translate(pos.x, pos.y-radius);
-    circle(radius, radius, radius*2);
+    translate(pos.x, pos.y);
+    circle(0, 0, radius*2);
     stroke(0,0,0);
     popMatrix();
   }

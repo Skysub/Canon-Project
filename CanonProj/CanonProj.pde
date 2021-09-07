@@ -2,7 +2,7 @@ GameLogic gameLogic;
 
 void setup() {
   size(1280, 720);
-  frameRate(60);
+  frameRate(144);
   gameLogic = new GameLogic();
 }
 
