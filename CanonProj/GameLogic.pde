@@ -58,7 +58,11 @@ Target[] targets = new Target[maxTargets];
       targets[i].Update();
     }
     
+    DrawScoreTime(score,hScore,0);
+    
     CheckCollisions();
+    
+    
   }
   
   //Skyder en bold af sted
@@ -93,7 +97,15 @@ Target[] targets = new Target[maxTargets];
   }
 
   void DrawScoreTime(int s, int hs, int t) {
-    
+    pushMatrix();
+    fill(20);
+    stroke(0,0,0);
+    textSize(45);
+    translate(20,40);
+    text("Time: "+t,0,0);
+    translate(0,40);
+    text("Score: "+s,0,0);
+    popMatrix();
     
   }
 }
