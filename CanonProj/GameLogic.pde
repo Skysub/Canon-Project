@@ -23,7 +23,7 @@ CannonBall[] balls = new CannonBall[maxBalls];
   }
 
   void Update() {
-    //fortæller kanonen hvilken vej den skal ddreje
+    //fortæller kanonen hvilken vej den skal dreje
     if((hojre && venstre)||(!hojre && !venstre)){kDrej = 0;}
     else if(hojre){kDrej = 2;}
     else {kDrej = 1;}
