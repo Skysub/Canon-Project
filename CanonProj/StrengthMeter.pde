@@ -32,9 +32,13 @@ PVector loc;
       y += strength*10;
     }
     
-    print(strength, flip);
 
 
+  }
+  
+  
+  float GetStrength(){
+   return strength; 
   }
 
   void Draw(){
