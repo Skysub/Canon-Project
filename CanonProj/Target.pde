@@ -33,8 +33,10 @@ class Target {
     pushMatrix();
     fill(220);
     stroke(255,0,0);
+    strokeWeight(4);
     translate(pos.x, pos.y);
     circle(0, 0, radius*2);
+    strokeWeight(2);
     stroke(0,0,0);
     popMatrix();
   }

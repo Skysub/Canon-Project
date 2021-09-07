@@ -33,7 +33,7 @@ Target[] targets = new Target[maxTargets];
   }
 
   void Update() {
-    if(!round && enter) roundBegin = true;
+    if(enter) roundBegin = true;
     
     //fortæller kanonen hvilken vej den skal dreje
     if((hojre && venstre)||(!hojre && !venstre)){kDrej = 0;}
@@ -81,6 +81,7 @@ Target[] targets = new Target[maxTargets];
       round = true; 
       roundBegin = false;
       rTStart = millis();
+      if(hScore < score) hScore = score;
       score = 0;
     }
     
@@ -91,7 +92,7 @@ Target[] targets = new Target[maxTargets];
     if(round && rTStart + (timeLimitMin*60000) - millis() <= 0){
       roundTimer = timeLimitMin*60000;
       round = false;
-      hScore = score;
+      if(hScore < score) hScore = score;
     }
   }
 

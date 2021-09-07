@@ -45,6 +45,7 @@ class StrengthMeter {
     setGradient(50, 185, 50, 224.5, c1, c2);
 
     fill(0);
+    stroke(0);
     rect(loc.x, loc.y, 50, 10);
   }
 
