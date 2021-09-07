@@ -12,10 +12,14 @@ CannonBall[] balls = new CannonBall[maxBalls];
 Target[] targets = new Target[maxTargets];
   
   Cannon cannon;
+  StrengthMeter strengthMeter;
 
 //constructer
   GameLogic() {
     cannon = new Cannon(1.35*PI, cannonLocation);
+
+    strengthMeter = new StrengthMeter();
+
     
     //instantierer alle targets
     for(int i = 0; i < maxTargets; i++){
@@ -42,9 +46,14 @@ Target[] targets = new Target[maxTargets];
     cannon.update(kDrej);
     cannon.display();
     
+    strengthMeter.Update();
+    strengthMeter.Draw();
+    
+    
     //skyd kanonkuglen og sørg for at den kun kan skydes et hvis antal gange i sekundet
     if(space && millis() > ballTimer+(1000f/ballsPS)) {gShoot(); ballTimer = millis();} 
         
+
     for(int i = 0; i<maxTargets;i++){
       targets[i].Update();
     }
