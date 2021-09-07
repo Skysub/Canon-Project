@@ -1,12 +1,12 @@
 class GameLogic {
 
-boolean hojre=false,venstre=false,space=false,enter=false, ball = false;
-int kDrej = 0, nextBall = 0;
+boolean hojre=false,venstre=false,space=false,enter=false, ball = false, round = false, roundBegin = false;
+int kDrej = 0, nextBall = 0, timeLimitMin = 2;
 int score = 0, hScore = 0, maxTargets = 3, //hvor mange targets der maks bliver spawnet samtidig
     maxBalls = 50, //Hvor mange kugler der kan være på skærmen samtidig
     ballsPS = 2; //Hvor mange kugler kanon kan skyde i sekundet
 PVector tSkyd, tSkydS, cannonLocation = new PVector(30, height-90);
-float ballTimer = 0;
+float ballTimer = 0, roundTimer = 0, rTStart;
 
 CannonBall[] balls = new CannonBall[maxBalls];
 Target[] targets = new Target[maxTargets];
@@ -33,6 +33,8 @@ Target[] targets = new Target[maxTargets];
   }
 
   void Update() {
+    if(!round && space) roundBegin = true;
+    
     //fortæller kanonen hvilken vej den skal dreje
     if((hojre && venstre)||(!hojre && !venstre)){kDrej = 0;}
     else if(hojre){kDrej = 2;}
@@ -58,11 +60,9 @@ Target[] targets = new Target[maxTargets];
       targets[i].Update();
     }
     
-    DrawScoreTime(score,hScore,0);
-    
+    handleTimer();
+    DrawScoreTime(score,hScore,roundTimer);
     CheckCollisions();
-    
-    
   }
   
   //Skyder en bold af sted
@@ -76,6 +76,24 @@ Target[] targets = new Target[maxTargets];
     if(nextBall >= maxBalls) nextBall = 0;
   }
 
+  void handleTimer(){
+    if(roundBegin){
+      round = true; 
+      roundBegin = false;
+      rTStart = millis();
+      score = 0;
+    }
+    
+    if(round){
+    roundTimer = rTStart + (timeLimitMin*60000) - millis();
+    }
+    
+    if(rTStart + (timeLimitMin*30000) - millis() <= 0){
+      roundTimer = 0;
+      round = false;
+      hScore = score;
+    }
+  }
 
   void CheckCollisions() {
     for(int i = 0; i<maxBalls; i++){
@@ -97,13 +115,16 @@ Target[] targets = new Target[maxTargets];
     if(k == 13){enter = b;}
   }
 
-  void DrawScoreTime(int s, int hs, int t) {
+  void DrawScoreTime(int s, int hs, float t) {
+    int min, sec;
     pushMatrix();
     fill(20);
     stroke(0,0,0);
     textSize(45);
     translate(20,40);
+    
     text("Time: "+t,0,0);
+    
     translate(0,45);
     text("Score: "+s,0,0);
     translate(0,45);
