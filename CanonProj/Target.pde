@@ -1,5 +1,5 @@
 class Target {
-  int radius = 20; //Skal bruges både til at tegne den men også til collision calculations
+  int radius = 35; //Skal bruges både til at tegne den men også til collision calculations
   PVector pos, vel, acc;
 
   Target(PVector p) {
@@ -32,7 +32,7 @@ class Target {
   void DrawTarget() {
     pushMatrix();
     stroke(255,0,0);
-    translate(pos.x, pos.y);
+    translate(pos.x, pos.y-radius);
     circle(radius, radius, radius*2);
     stroke(0,0,0);
     popMatrix();

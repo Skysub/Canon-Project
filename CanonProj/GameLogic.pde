@@ -4,7 +4,7 @@ boolean hojre=false,venstre=false,space=false,enter=false, ball = false;
 int kDrej = 0, nextBall = 0;
 int score = 0, hScore = 0, maxTargets = 3, //hvor mange targets der maks bliver spawnet samtidig
     maxBalls = 50, //Hvor mange kugler der kan være på skærmen samtidig
-    ballsPS = 10; //Hvor mange kugler kanon kan skyde i sekundet
+    ballsPS = 1; //Hvor mange kugler kanon kan skyde i sekundet
 PVector tSkyd, tSkydS, cannonLocation = new PVector(30, height-90);
 float ballTimer = 0;
 
