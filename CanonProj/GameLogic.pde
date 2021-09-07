@@ -9,12 +9,18 @@ PVector tSkyd, tSkydS, cannonLocation = new PVector(30, height-90);
 float ballTimer = 0;
 
 CannonBall[] balls = new CannonBall[maxBalls];
+Target[] targets = new Target[maxTargets];
   
   Cannon cannon;
 
 //constructer
   GameLogic() {
     cannon = new Cannon(1.35*PI, cannonLocation);
+    
+    //instantierer alle targets
+    for(int i = 0; i < maxTargets; i++){
+       targets[i] = new Target(new PVector(random(150,width-50),random(50,height-150)));
+    }
     
     //instantierer alle boldene
     for(int i=0; i<maxBalls;i++){
@@ -29,7 +35,7 @@ CannonBall[] balls = new CannonBall[maxBalls];
     else {kDrej = 1;}
     
     //opdaterer boldene
-        for(int i = 0; i<maxBalls;i++){
+    for(int i = 0; i<maxBalls;i++){
       if(ball){balls[i].Update();}
     }
     
@@ -39,7 +45,11 @@ CannonBall[] balls = new CannonBall[maxBalls];
     //skyd kanonkuglen og sørg for at den kun kan skydes et hvis antal gange i sekundet
     if(space && millis() > ballTimer+(1000f/ballsPS)) {gShoot(); ballTimer = millis();} 
         
-
+    for(int i = 0; i<maxTargets;i++){
+      targets[i].Update();
+    }
+    
+    CheckCollisions();
   }
   
   //Skyder en bold af sted
@@ -55,6 +65,14 @@ CannonBall[] balls = new CannonBall[maxBalls];
 
 
   void CheckCollisions() {
+    for(int i = 0; i<maxBalls; i++){
+      for(int j = 0; j<maxTargets; j++){
+        if(targets[j].TjekCollision(balls[i].GetPos(),balls[i].GetSize())){
+          score++;
+          targets[j] = new Target(new PVector(random(150,width-50),random(50,height-150)));
+        }
+      }
+    }
   }
 
 //Sørger for at controlsne fungerer

@@ -26,4 +26,12 @@ class CannonBall {
     popMatrix();
 
   }
+  
+  PVector GetPos(){
+   return pos; 
+  }
+  
+  float GetSize(){
+    return ballSize;
+  }
 }
