@@ -9,7 +9,7 @@ void setup() {
 }
 
 void draw() {
-  //image(backdrop, 0, 0, width, height);
+  image(backdrop, 0, 0, width, height);
   background(240);
   gameLogic.Update();
   DrawGround();
