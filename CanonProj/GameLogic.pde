@@ -23,7 +23,7 @@ Target[] targets = new Target[maxTargets];
     
     //instantierer alle targets
     for(int i = 0; i < maxTargets; i++){
-       targets[i] = new Target(new PVector(random(150,width-50),random(50,height-150)));
+       targets[i] = new Target(new PVector(random(150,width-150),random(50,height-150)));
     }
     
     //instantierer alle boldene
@@ -101,7 +101,7 @@ Target[] targets = new Target[maxTargets];
         if(targets[j].TjekCollision(balls[i].GetPos(),balls[i].GetSize())){
           score++;
           //if(score > hScore) hScore = score;
-          targets[j] = new Target(new PVector(random(150,width-50),random(50,height-150)));
+          targets[j] = new Target(new PVector(random(150,width-150),random(50,height-150)));
         }
       }
     }
