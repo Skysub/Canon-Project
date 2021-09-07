@@ -39,7 +39,7 @@ class Cannon {
    
    y = 200 * cos(theta);
    x = -200 * sin(theta);
-   PVector ballPos = new PVector(x-25, y-25);
+   PVector ballPos = new PVector(x-14, y-14);
    popMatrix();
    
    return ballPos;
