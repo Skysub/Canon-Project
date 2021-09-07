@@ -3,7 +3,7 @@ class GameLogic {
 boolean hojre=false,venstre=false,space=false,enter=false, ball = false;
 int kDrej = 0;
 int score = 0, hScore = 0, maxTargets = 3, maxBalls = 1, ballsPS = 10;
-PVector tSkyd, tSkydS, cannonLocation = new PVector(30, height-90);
+PVector tSkyd, tSkydS, cannonLocation = new PVector(30, height-110);
 float ballTimer = 0;
 CannonBall[] balls = new CannonBall[maxBalls];
   
