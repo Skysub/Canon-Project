@@ -21,9 +21,18 @@ class CannonBall {
 
   void DrawBall() {
     pushMatrix();
+    fill(220);
     translate(pos.x, pos.y);
-    circle(ballSize/2f, ballSize/2f, ballSize);
+    circle(0, 0, ballSize);
     popMatrix();
 
+  }
+  
+  PVector GetPos(){
+   return pos; 
+  }
+  
+  float GetSize(){
+    return ballSize;
   }
 }
