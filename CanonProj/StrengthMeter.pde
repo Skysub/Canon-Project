@@ -3,11 +3,14 @@ class StrengthMeter{
 float strength, y;
 boolean flip;
 PVector loc;
+color c1, c2;
   
   StrengthMeter(){
     strength = 0.01;
     flip = false;
     y = 400;
+    c1 = color(200, 0, 0);
+    c2 = color(20, 200, 20);
   }
   
   
@@ -38,9 +41,20 @@ PVector loc;
   }
 
   void Draw(){
-    rect(50, 185, 50, 224.5);
+    setGradient(50, 185, 50, 224.5, c1, c2);
     
     fill(0);
     rect(loc.x, loc.y, 50, 10);
   }
+  
+  void setGradient(int x, int y, float w, float h, color c1, color c2) {
+  
+  noFill();
+    for (int i = y; i <= y+h; i++) {
+      float inter = map(i, y, y+h, 0, 1);
+      color c = lerpColor(c1, c2, inter);
+      stroke(c);
+      line(x, i, x+w, i);
+  }  
+}
 }
