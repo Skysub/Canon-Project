@@ -6,7 +6,7 @@ class CannonBall {
   CannonBall(PVector v, float s, PVector cannonLocation) {
 
     pos = new PVector(v.x, v.y);
-    vel = PVector.mult(pos, s/8f);
+    vel = PVector.mult(pos, s/7.5f);
     pos = PVector.add(pos, cannonLocation);
     acc = new PVector(0, 0.13);
   }
