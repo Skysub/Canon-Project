@@ -4,7 +4,7 @@ boolean hojre=false,venstre=false,space=false,enter=false, ball = false;
 int kDrej = 0, nextBall = 0;
 int score = 0, hScore = 0, maxTargets = 3, //hvor mange targets der maks bliver spawnet samtidig
     maxBalls = 50, //Hvor mange kugler der kan være på skærmen samtidig
-    ballsPS = 1; //Hvor mange kugler kanon kan skyde i sekundet
+    ballsPS = 2; //Hvor mange kugler kanon kan skyde i sekundet
 PVector tSkyd, tSkydS, cannonLocation = new PVector(30, height-90);
 float ballTimer = 0;
 
@@ -67,7 +67,7 @@ Target[] targets = new Target[maxTargets];
     tSkyd = cannon.shoot();
     tSkydS = new PVector(tSkyd.x,tSkyd.y);
     
-    balls[nextBall] = new CannonBall(tSkyd, 0.5f, cannonLocation);
+    balls[nextBall] = new CannonBall(tSkyd, strengthMeter.GetStrength(), cannonLocation);
     nextBall++;
     if(nextBall >= maxBalls) nextBall = 0;
   }
