@@ -26,7 +26,7 @@ class Cannon {
 
     translate(location.x, location.y);
     rotate(theta);
-    rect(-45, 0, 40, 200);
+    rect(0, 0, 40, 200);
     popMatrix();
 
     ellipse(location.x, location.y, 200, 200);
@@ -39,7 +39,7 @@ class Cannon {
    
    y = 200 * cos(theta);
    x = -200 * sin(theta);
-   PVector ballPos = new PVector(x, y);
+   PVector ballPos = new PVector(x-25, y-25);
    popMatrix();
    
    return ballPos;
