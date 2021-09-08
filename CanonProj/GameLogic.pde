@@ -7,6 +7,7 @@ int score = 0, hScore = 0, maxTargets = 3, //hvor mange targets der maks bliver 
     ballsPS = 2; //Hvor mange kugler kanon kan skyde i sekundet
 PVector tSkyd, tSkydS, cannonLocation = new PVector(30, height-90);
 float ballTimer = 0;
+SoundFile fire;
 
 CannonBall[] balls = new CannonBall[maxBalls];
 Target[] targets = new Target[maxTargets];
@@ -19,6 +20,7 @@ Target[] targets = new Target[maxTargets];
     cannon = new Cannon(1.35*PI, cannonLocation);
 
     strengthMeter = new StrengthMeter();
+    fire = new SoundFile(CanonProj.this, "Cannonfire.mp3");
 
     
     //instantierer alle targets
@@ -70,6 +72,7 @@ Target[] targets = new Target[maxTargets];
     ball = true;
     tSkyd = cannon.shoot();
     tSkydS = new PVector(tSkyd.x,tSkyd.y);
+    fire.play();
     
     balls[nextBall] = new CannonBall(tSkyd, strengthMeter.GetStrength(), cannonLocation);
     nextBall++;

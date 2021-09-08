@@ -13,7 +13,6 @@ class StrengthMeter {
     c2 = color(20, 200, 20);
   }
 
-
   void Update() {
 
     loc = new PVector(50, y);
@@ -31,11 +30,10 @@ class StrengthMeter {
       y -= strength*10;
     }
     if (flip == true) {
-      strength -= strength/22.65;
+      strength -= strength/22.63;
       y += strength*10;
     }
   }
-
 
   float GetStrength() {
     return strength;

@@ -1,3 +1,5 @@
+import processing.sound.*;
+
 GameLogic gameLogic;
 PImage backdrop;
 PImage target;
