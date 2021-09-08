@@ -32,14 +32,14 @@ void DrawGround() {
 
 void DrawControls() {
 
-  rect(1090, 0, 250, 190);
+  rect(1078, 0, 206, 216);
   textSize(20);
   fill(0,0,0);
   text("ENTER to begin",1125,40);
   text("← and → to aim",1118,80);
   text("SPACEBAR to fire",1110,120);
 
-  text("P to enable particles", 1078,200);
+  text("P to enable particles", 1084,200);
   text("↑↓ to change mode",1094,160);
 
 }
