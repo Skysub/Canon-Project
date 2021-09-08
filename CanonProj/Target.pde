@@ -29,12 +29,22 @@ class Target {
 
   void DrawTarget() {
     pushMatrix();
+    fill(255);
     stroke(255,0,0);
+    strokeWeight(4);
     translate(pos.x, pos.y);
+
     imageMode(CENTER);
     image(target, 0, 0, radius*2.2, radius*2.2);
     //circle(0, 0, radius*2);
     //stroke(0,0,0);
+
+    /*circle(0, 0, radius*2); frederik targets
+    circle(0, 0, radius*1.25f);
+    circle(0, 0, radius/2f);
+    strokeWeight(2);
+    stroke(0,0,0);*/
+
     popMatrix();
   }
 }

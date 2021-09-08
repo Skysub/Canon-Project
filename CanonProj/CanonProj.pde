@@ -13,6 +13,7 @@ void setup() {
 void draw() {
   imageMode(CORNER);
   image(backdrop, 0, 0, width, height);
+  //background(240);
   gameLogic.Update();
   DrawGround();
   DrawControls();
@@ -20,7 +21,8 @@ void draw() {
 
 
 void DrawGround() {
-  rect(0, height-60, width, 60);
+  fill(220); //græs-farve?
+  rect(0, height-60, 125, 60);
 }
 
 void DrawControls() {
