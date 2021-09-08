@@ -5,10 +5,10 @@ class Particle {
   float lifespan;
 
   Particle(PVector origin) {
-    acceleration = new PVector(0,0.05);
-    velocity = new PVector(random(-1,1),random(-2,0));
+    acceleration = new PVector(-0.01,-0.01);
+    velocity = new PVector(random(-3,-1),random(-1,1));
     location = origin.get();
-    lifespan = 255.0;
+    lifespan = 40.0;
   }
 
   void run() {
@@ -24,8 +24,9 @@ class Particle {
 
   void display() {
     stroke(0,lifespan);
-    fill(0,lifespan);
-    ellipse(location.x,location.y,8,8);
+    fill(random(50,255),0,0,lifespan);
+    triangle(location.x,location.y, location.x-12, location.y-12, location.x-12, location.y+12);
+    stroke(0);
   }
 
   // Is the Particle alive or dead?

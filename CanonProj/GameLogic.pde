@@ -1,9 +1,11 @@
 class GameLogic {
 
-  boolean hojre=false, venstre=false, space=false, enter=false, enterF = false, ball = false, round = false, roundBegin = false, hard = false, op = false, ned = false, lastModeHard = false;
+
+  boolean hojre=false, venstre=false, space=false, enter=false, enterF = false, ball = false, round = false, roundBegin = false, hard = false, op = false, ned = false, lastModeHard = false, p = false, pp = false, ppp = false, particles = false;;
   int kDrej = 0, nextBall = 0, timeLimitMin = 1, roundTimer = 60000, rTStart;
   int score = 0, hScore = 0, hHScore = 0, maxTargets = 3, //hvor mange targets der maks bliver spawnet samtidig
     maxBalls = 10, //Hvor mange kugler der kan være på skærmen samtidig
+
     ballsPS = 2; //Hvor mange kugler kanon kan skyde i sekundet
   PVector tSkyd, tSkydS, cannonLocation = new PVector(30, height-90);
   float ballTimer = 0;
@@ -31,11 +33,23 @@ class GameLogic {
 
     //instantierer alle boldene
     for (int i=0; i<maxBalls; i++) {
-      balls[i] = new CannonBall(new PVector(-50, 0), 0.5f, new PVector(-50, 0));
+      balls[i] = new CannonBall(new PVector(-50, 0), 0.5f, new PVector(-50, 0), p);
     }
   }
 
   void Update() {
+
+    if (!p && pp && !ppp) {
+      p = true; 
+      ppp = true;
+    }
+    if (p && pp && !ppp) {
+      p = false; 
+      ppp = true;
+    }
+    if(ppp && !pp) ppp = false;
+    if (p) particles = false;
+    
     if (enter && !round && !enterF) {
       roundBegin = true;       
       enterF = true;
@@ -52,6 +66,7 @@ class GameLogic {
     if (ned && !round) hard = false;
     DrawMidtTekst();
 
+
     //fortæller kanonen hvilken vej den skal dreje
     if ((hojre && venstre)||(!hojre && !venstre)) {
       kDrej = 0;
@@ -65,6 +80,9 @@ class GameLogic {
     for (int i = 0; i<maxBalls; i++) {
       if (ball) {
         balls[i].Update();
+      }
+      if (particles) {
+        balls[i].particles();
       }
     }
 
@@ -99,7 +117,7 @@ class GameLogic {
     fire.amp(strengthMeter.GetStrength());
     fire.play();
 
-    balls[nextBall] = new CannonBall(tSkyd, strengthMeter.GetStrength(), cannonLocation);
+    balls[nextBall] = new CannonBall(tSkyd, strengthMeter.GetStrength(), cannonLocation, p);
     nextBall++;
     if (nextBall >= maxBalls) nextBall = 0;
   }
@@ -148,6 +166,7 @@ class GameLogic {
 
   //Sørger for at controlsne fungerer
   void HandleInput(int k, boolean b) {
+
     if (k == 39)hojre = b;
     if (k == 37)venstre = b;
     if (k == 32)space = b;
@@ -157,6 +176,8 @@ class GameLogic {
     }
     if (k == 40) ned = b;
     if (k == 38) op = b;
+    if (k == 80) pp = b;
+
   }
 
   void DrawScoreTime(int s, int hs, int t, int hhs) {
