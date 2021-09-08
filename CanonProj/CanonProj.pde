@@ -1,14 +1,17 @@
 GameLogic gameLogic;
 PImage backdrop;
+PImage target;
 
 void setup() {
   size(1280, 720);
   frameRate(144);
   gameLogic = new GameLogic();
   backdrop = loadImage("HillsBackdrop.JPG");
+  target = loadImage("Target.png");
 }
 
 void draw() {
+  imageMode(CORNER);
   image(backdrop, 0, 0, width, height);
   gameLogic.Update();
   DrawGround();

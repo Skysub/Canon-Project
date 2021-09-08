@@ -14,8 +14,6 @@ class Target {
     vel = PVector.add(acc, vel);
     pos = PVector.add(pos, vel);
 
-
-
     DrawTarget();
   }
 
@@ -33,8 +31,10 @@ class Target {
     pushMatrix();
     stroke(255,0,0);
     translate(pos.x, pos.y);
-    circle(0, 0, radius*2);
-    stroke(0,0,0);
+    imageMode(CENTER);
+    image(target, 0, 0, radius*2.2, radius*2.2);
+    //circle(0, 0, radius*2);
+    //stroke(0,0,0);
     popMatrix();
   }
 }
