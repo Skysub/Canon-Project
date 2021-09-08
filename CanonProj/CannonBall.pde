@@ -19,6 +19,7 @@ class CannonBall {
     vel = PVector.add(acc, vel);
     pos = PVector.add(pos, vel);
     DrawBall();
+
   }
 
 
@@ -28,6 +29,7 @@ class CannonBall {
     translate(pos.x, pos.y);
     circle(0, 0, ballSize);
     popMatrix();
+    ps.addParticle();
     ps.run(pos);
     
   }
