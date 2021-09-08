@@ -3,9 +3,10 @@ import processing.sound.*;
 GameLogic gameLogic;
 PImage backdrop;
 PImage target;
+//int tOld = 0;
 
 void setup() {
-  size(1280, 720);
+  size(1280,720);
   frameRate(144);
   gameLogic = new GameLogic();
   backdrop = loadImage("HillsBackdrop.JPG");
@@ -19,22 +20,28 @@ void draw() {
   gameLogic.Update();
   DrawGround();
   DrawControls();
+  //println(1f/((millis()-tOld)/1000f));
+  //tOld = millis(); //framerate
 }
 
 
 void DrawGround() {
   fill(220); //græs-farve?
-  rect(0, height-60, 125, 60);
+  rect(-5, height-60, 128, 60);
 }
 
 void DrawControls() {
-  rect(1070, 0, 210, 190);
+
+  rect(1090, 0, 250, 190);
   textSize(20);
   fill(0,0,0);
   text("ENTER to begin",1125,40);
   text("← and → to aim",1118,80);
   text("SPACEBAR to fire",1110,120);
-  text("P to enable particles", 1078,160);
+
+  text("P to enable particles", 1078,200);
+  text("↑↓ to change mode",1094,160);
+
 }
 
 void keyPressed() {
