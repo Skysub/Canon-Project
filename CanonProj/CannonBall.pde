@@ -1,17 +1,20 @@
-ParticleSystem ps;
+
 
 class CannonBall {
+  ParticleSystem ps;
   PVector pos, vel, acc;
   float ballSize = 30;
+  boolean particles;
 
 
-  CannonBall(PVector v, float s, PVector cannonLocation) {
+  CannonBall(PVector v, float s, PVector cannonLocation, boolean p) {
 
+    particles = p;
     pos = new PVector(v.x, v.y);
     vel = PVector.mult(pos, s/7.5f);
     pos = PVector.add(pos, cannonLocation);
     acc = new PVector(0, 0.13);
-    ps = new ParticleSystem(pos);
+    if (particles) ps = new ParticleSystem(pos);
   }
 
   void Update() {
@@ -19,7 +22,7 @@ class CannonBall {
     vel = PVector.add(acc, vel);
     pos = PVector.add(pos, vel);
     DrawBall();
-
+    if (particles) particles();
   }
 
 
@@ -30,17 +33,17 @@ class CannonBall {
     circle(0, 0, ballSize);
     popMatrix();
   }
-  
+
   void particles() {
-     ps.addParticle();
-     ps.run(pos);
+    ps.addParticle();
+    ps.run(pos);
   }
-  
-  PVector GetPos(){
-   return pos; 
+
+  PVector GetPos() {
+    return pos;
   }
-  
-  float GetSize(){
+
+  float GetSize() {
     return ballSize;
   }
-  }
+}

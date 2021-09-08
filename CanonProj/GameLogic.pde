@@ -1,6 +1,6 @@
 class GameLogic {
 
-  boolean hojre=false, venstre=false, space=false, enter=false, ball = false, round = false, roundBegin = false, hard = false, op = false, ned = false, p = false, particles = false;
+  boolean hojre=false, venstre=false, space=false, enter=false, ball = false, round = false, roundBegin = false, hard = false, op = false, ned = false, p = false, pp = false, ppp = false, particles = false;
   int kDrej = 0, nextBall = 0, timeLimitMin = 1, roundTimer = 0, rTStart;
   int score = 0, hScore = 0, maxTargets = 3, //hvor mange targets der maks bliver spawnet samtidig
     maxBalls = 50, //Hvor mange kugler der kan være på skærmen samtidig
@@ -31,11 +31,20 @@ class GameLogic {
 
     //instantierer alle boldene
     for (int i=0; i<maxBalls; i++) {
-      balls[i] = new CannonBall(new PVector(-50, 0), 0.5f, new PVector(-50, 0));
+      balls[i] = new CannonBall(new PVector(-50, 0), 0.5f, new PVector(-50, 0), p);
     }
   }
 
   void Update() {
+    if (!p && pp && !ppp) {
+      p = true; 
+      ppp = true;
+    }
+    if (p && pp && !ppp) {
+      p = false; 
+      ppp = true;
+    }
+    if(ppp && !pp) ppp = false;
     if (enter) roundBegin = true;
     if (p) particles = false;
 
@@ -89,7 +98,7 @@ class GameLogic {
     fire.amp(strengthMeter.GetStrength());
     fire.play();
 
-    balls[nextBall] = new CannonBall(tSkyd, strengthMeter.GetStrength(), cannonLocation);
+    balls[nextBall] = new CannonBall(tSkyd, strengthMeter.GetStrength(), cannonLocation, p);
     nextBall++;
     if (nextBall >= maxBalls) nextBall = 0;
   }
@@ -130,13 +139,13 @@ class GameLogic {
 
   //Sørger for at controlsne fungerer
   void HandleInput(int k, boolean b) {
-    if (k == 39)hojre = b;
-    if (k == 37)venstre = b;
-    if (k == 32)space = b;
-    if (k == 10)enter = b;
+    if (k == 39) hojre = b;
+    if (k == 37) venstre = b;
+    if (k == 32) space = b;
+    if (k == 10) enter = b;
     if (k == 38) ned = b;
     if (k == 40) op = b;
-    if (k == 80) p = b;
+    if (k == 80) pp = b;
   }
 
   void DrawScoreTime(int s, int hs, int t) {

@@ -26,6 +26,7 @@ class Particle {
     stroke(0,lifespan);
     fill(random(50,255),0,0,lifespan);
     triangle(location.x,location.y, location.x-12, location.y-12, location.x-12, location.y+12);
+    stroke(0);
   }
 
   // Is the Particle alive or dead?
