@@ -24,7 +24,7 @@ void draw() {
 
 void DrawGround() {
   fill(220); //græs-farve?
-  rect(0, height-60, 125, 60);
+  rect(-5, height-60, 128, 60);
 }
 
 void DrawControls() {
