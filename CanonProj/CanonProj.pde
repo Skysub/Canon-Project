@@ -28,12 +28,13 @@ void DrawGround() {
 }
 
 void DrawControls() {
-  rect(1100, 0, 180, 150);
+  rect(1090, 0, 200, 175);
   textSize(20);
   fill(0,0,0);
   text("ENTER to begin",1125,40);
   text("← and → to aim",1118,80);
   text("SPACEBAR to fire",1110,120);
+  text("↑↓ to change mode",1094,160);
 }
 
 void keyPressed() {

@@ -37,6 +37,7 @@ class GameLogic {
 
   void Update() {
     if (enter) roundBegin = true;
+    DrawMidtTekst();
 
     //fortæller kanonen hvilken vej den skal dreje
     if ((hojre && venstre)||(!hojre && !venstre)) {
@@ -153,5 +154,25 @@ class GameLogic {
     translate(0, 45);
     text("Highscore: "+hs, 0, 0);
     popMatrix();
+  }
+
+  void DrawMidtTekst() {
+    //    pushMatrix();
+    //fill(20);
+    //stroke(0, 0, 0);
+    //textSize(45);
+    //translate(20, 40);
+
+    //min = floor(t/60000f);
+    //t = t - floor(t/60000f)*60000;
+    //sec = floor(t/1000f);
+    //t = t - floor(t/1000f)*1000;
+    //text("Time: "+min+":"+sec+"."+t, 0, 0);
+
+    //translate(0, 45);
+    //text("Score: "+s, 0, 0);
+    //translate(0, 45);
+    //text("Highscore: "+hs, 0, 0);
+    //popMatrix();
   }
 }
