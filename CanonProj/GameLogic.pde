@@ -1,6 +1,6 @@
 class GameLogic {
 
-  boolean hojre=false, venstre=false, space=false, enter=false, ball = false, round = false, roundBegin = false, hard = false, op = false, ned = false;
+  boolean hojre=false, venstre=false, space=false, enter=false, ball = false, round = false, roundBegin = false, hard = false, op = false, ned = false, p = false, particles = false;
   int kDrej = 0, nextBall = 0, timeLimitMin = 1, roundTimer = 0, rTStart;
   int score = 0, hScore = 0, maxTargets = 3, //hvor mange targets der maks bliver spawnet samtidig
     maxBalls = 50, //Hvor mange kugler der kan være på skærmen samtidig
@@ -37,6 +37,7 @@ class GameLogic {
 
   void Update() {
     if (enter) roundBegin = true;
+    if (p) particles = false;
 
     //fortæller kanonen hvilken vej den skal dreje
     if ((hojre && venstre)||(!hojre && !venstre)) {
@@ -51,6 +52,9 @@ class GameLogic {
     for (int i = 0; i<maxBalls; i++) {
       if (ball) {
         balls[i].Update();
+      }
+      if (particles) {
+        balls[i].particles();
       }
     }
 
@@ -132,6 +136,7 @@ class GameLogic {
     if (k == 10)enter = b;
     if (k == 38) ned = b;
     if (k == 40) op = b;
+    if (k == 80) p = b;
   }
 
   void DrawScoreTime(int s, int hs, int t) {

@@ -29,9 +29,11 @@ class CannonBall {
     translate(pos.x, pos.y);
     circle(0, 0, ballSize);
     popMatrix();
-    ps.addParticle();
-    ps.run(pos);
-    
+  }
+  
+  void particles() {
+     ps.addParticle();
+     ps.run(pos);
   }
   
   PVector GetPos(){
