@@ -40,6 +40,9 @@ class StrengthMeter {
   }
 
   void Draw() {
+    fill(0);
+    rect(45, 180, 60, 234.5);
+    
     setGradient(50, 185, 50, 224.5, c1, c2);
 
     fill(0);
