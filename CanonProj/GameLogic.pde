@@ -115,7 +115,7 @@ class GameLogic {
       for (int j = 0; j<maxTargets; j++) {
         if (targets[j].TjekCollision(balls[i].GetPos(), balls[i].GetSize())) {
           score++;
-          hit.amp(0.1);
+          hit.amp(0.2);
           hit.play();
           //if(score > hScore) hScore = score;
           targets[j] = new Target(new PVector(random(150, width-150), random(50, height-150)));
