@@ -3,7 +3,7 @@ class GameLogic {
   boolean hojre=false, venstre=false, space=false, enter=false, enterF = false, ball = false, round = false, roundBegin = false, hard = false, op = false, ned = false, lastModeHard = false;
   int kDrej = 0, nextBall = 0, timeLimitMin = 1, roundTimer = 60000, rTStart;
   int score = 0, hScore = 0, hHScore = 0, maxTargets = 3, //hvor mange targets der maks bliver spawnet samtidig
-    maxBalls = 50, //Hvor mange kugler der kan være på skærmen samtidig
+    maxBalls = 10, //Hvor mange kugler der kan være på skærmen samtidig
     ballsPS = 2; //Hvor mange kugler kanon kan skyde i sekundet
   PVector tSkyd, tSkydS, cannonLocation = new PVector(30, height-90);
   float ballTimer = 0;

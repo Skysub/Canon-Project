@@ -3,9 +3,10 @@ import processing.sound.*;
 GameLogic gameLogic;
 PImage backdrop;
 PImage target;
+//int tOld = 0;
 
 void setup() {
-  size(1280, 720);
+  size(1280,720);
   frameRate(144);
   gameLogic = new GameLogic();
   backdrop = loadImage("HillsBackdrop.JPG");
@@ -19,6 +20,8 @@ void draw() {
   gameLogic.Update();
   DrawGround();
   DrawControls();
+  //println(1f/((millis()-tOld)/1000f));
+  //tOld = millis(); //framerate
 }
 
 
